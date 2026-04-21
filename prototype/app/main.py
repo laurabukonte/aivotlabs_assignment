@@ -7,7 +7,7 @@ Provides:
   GET  /slots           - list all appointment slots
   GET  /bookings        - list confirmed bookings
   GET  /sessions/{id}   - full session transcript & log
-  POST /reset-slots     - reset all slots to available (demo helper)
+  POST /reset-slots     - reset all slots to available ( helper)
   GET  /health          - health check
 """
 
@@ -80,9 +80,8 @@ def create_app() -> FastAPI:
 
 app = create_app()
 
-# ---------------------------------------------------------------------------
+
 # Entrypoint
-# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     import uvicorn
 
