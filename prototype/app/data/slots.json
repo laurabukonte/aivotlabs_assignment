@@ -2,37 +2,49 @@
   "slots": [
     {
       "id": "slot-1",
-      "datetime": "2026-04-21T09:00:00",
+      "datetime": "2026-04-22T09:00:00",
       "appointment_type": "Hammaslääkäriaika",
       "available": true
     },
     {
       "id": "slot-2",
-      "datetime": "2026-04-21T14:00:00",
+      "datetime": "2026-04-22T14:00:00",
       "appointment_type": "Hammaslääkäriaika",
       "available": true
     },
     {
       "id": "slot-3",
-      "datetime": "2026-04-22T10:00:00",
+      "datetime": "2026-04-23T10:00:00",
       "appointment_type": "Suuhygienistiaika",
-      "available": true
+      "available": false
     },
     {
       "id": "slot-4",
-      "datetime": "2026-04-22T15:30:00",
+      "datetime": "2026-04-23T15:30:00",
       "appointment_type": "Suuhygienistiaika",
       "available": true
     },
     {
       "id": "slot-5",
-      "datetime": "2026-04-23T08:30:00",
+      "datetime": "2026-04-24T08:30:00",
       "appointment_type": "Työterveysaika",
       "available": true
     },
     {
       "id": "slot-6",
-      "datetime": "2026-04-23T11:00:00",
+      "datetime": "2026-04-24T11:00:00",
+      "appointment_type": "Hammaslääkäriaika",
+      "available": true
+    },
+    {
+      "id": "slot-7",
+      "datetime": "2026-04-25T13:00:00",
+      "appointment_type": "Työterveysaika",
+      "available": true
+    },
+    {
+      "id": "slot-8",
+      "datetime": "2026-04-25T16:00:00",
       "appointment_type": "Työterveysaika",
       "available": true
     }
