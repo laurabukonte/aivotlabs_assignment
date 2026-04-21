@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hammashoitola – Ajanvaraus</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body data-session-timeout="{{ session_timeout }}" data-session-warning="{{ session_warning }}">
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>🦷 Hammashoitola – Ajanvaraus</h1>
+    </div>
+
+    <!-- Chat panel -->
+    <div class="chat-panel">
+      <div id="timeoutBanner" class="timeout-banner"></div>
+
+      <div class="messages" id="messages">
+        <div class="msg assistant">
+          Hei! Tervetuloa hammashoitolaan. Kirjoita viesti aloittaaksesi ajanvarauksen.
+          <span class="ts">Järjestelmä</span>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <input type="text" id="userInput" placeholder="Kirjoita viesti…" autocomplete="off" />
+        <button class="btn-send" id="sendBtn">Lähetä</button>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="card">
+        <h3>Varauksen tila</h3>
+        <p>Tila: <span class="state-badge state-greeting" id="stateBadge">greeting</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

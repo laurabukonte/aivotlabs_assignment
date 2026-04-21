@@ -1,0 +1,27 @@
+[project]
+name = "prototype"
+version = "0.1.0"
+description = "Voice agent prototype – dental clinic appointment booking"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.136.0",
+    "httpx>=0.28.0",
+    "openai>=2.32.0",
+    "pydantic>=2.13.1",
+    "python-dotenv>=1.2.2",
+    "uvicorn>=0.44.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.28.0",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.0.3",
+    "ruff>=0.15.11",
+]

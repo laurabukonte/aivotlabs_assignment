@@ -1,0 +1,298 @@
+/* ===================================================================
+   Hammashoitola – Ajanvaraus  |  Main Stylesheet
+   =================================================================== */
+
+:root {
+  --bg: #f5f7fa;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --user-bg: #dbeafe;
+  --agent-bg: #f0fdf4;
+  --tool-bg: #fefce8;
+  --danger: #ef4444;
+  --radius: 10px;
+}
+
+/* ---- Reset ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Layout ---- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  grid-template-rows: auto 1fr;
+  gap: 0.5rem;
+  height: auto;
+  min-height: calc(100vh - 1rem);
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .sidebar {
+    order: -1;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+/* ---- Header ---- */
+.header {
+  grid-column: 1 / -1;
+  background: var(--primary);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.header .badge {
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* ---- Chat panel ---- */
+.chat-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ---- Message bubbles ---- */
+.msg {
+  max-width: 85%;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.msg.user {
+  background: var(--user-bg);
+  align-self: flex-end;
+}
+
+.msg.assistant {
+  background: var(--agent-bg);
+  align-self: flex-start;
+}
+
+.msg.tool {
+  background: var(--tool-bg);
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-family: monospace;
+}
+
+.msg .ts {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+/* ---- Input area ---- */
+.input-area {
+  border-top: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.input-area input {
+  flex: 1;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.input-area input:focus {
+  border-color: var(--primary);
+}
+
+/* ---- Buttons ---- */
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btn-send {
+  background: var(--primary);
+  color: #fff;
+}
+
+.btn-send:hover {
+  background: var(--primary-hover);
+}
+
+.btn-send:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.reset-btn {
+  background: var(--border);
+  color: var(--text);
+  font-size: 0.75rem;
+  padding: 0.4rem 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.reset-btn:hover {
+  background: #cbd5e1;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.card h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card p,
+.card li {
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.card ul {
+  list-style: none;
+}
+
+.card ul li {
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.card ul li:last-child {
+  border: none;
+}
+
+/* ---- State badges ---- */
+.state-badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.state-greeting {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.state-in_progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.state-booked {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.state-expired {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ---- Timeout banner ---- */
+.timeout-banner {
+  display: none;
+  background: #fef3c7;
+  color: #92400e;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+
+.timeout-banner.visible {
+  display: block;
+}
+
+.timeout-banner.expired {
+  background: #fee2e2;
+  color: #991b1b;
+}
