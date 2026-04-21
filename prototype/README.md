@@ -1,6 +1,6 @@
-# Dental Clinic Appointment Agent – Prototype
+# Dental Clinic Appointment Agent – Prototype 
 
-A Finnish-speaking chat (later voice) agent **Anna** that books dental clinic appointments. The agent guides patients through selecting an appointment type, choosing a slot, providing their name, confirming, and completing the booking, all in Finnish.
+A very basic and minimal, Finnish-speaking chat  agent **Anna** that books dental clinic appointments. The agent guides patients through selecting an appointment type, choosing a slot, providing their name, confirming, and completing the booking, all in Finnish.
 
 Built with FastAPI and an OpenAI-compatible LLM backend (default: Groq / Llama 3.3 70B) using structured function calling.
 

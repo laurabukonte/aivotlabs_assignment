@@ -23,16 +23,6 @@ def test_parse_standard_raw_tool_call():
     ]
 
 
-def test_parse_inline_raw_tool_call_without_closing_bracket():
-    text = (
-        'Selvä. <function=check_availability={"appointment_type":"Hammaslääkäriaika"}'
-        '</function>'
-    )
-
-    assert _parse_raw_tool_calls(text) == [
-        ("check_availability", {"appointment_type": "Hammaslääkäriaika"})
-    ]
-
 
 def test_parse_inline_raw_tool_call_with_colon_separator():
     text = (

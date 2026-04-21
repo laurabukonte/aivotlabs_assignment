@@ -137,4 +137,5 @@ def _serialize_tool_call(tool_call: Any) -> dict:
         "type": getattr(tool_call, "type", "function"),
         "function": function_payload,
     }
+
     return {key: value for key, value in payload.items() if value is not None}
