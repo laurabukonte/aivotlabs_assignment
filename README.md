@@ -9,7 +9,7 @@ This repository contains a healthcare appointment booking voice-agent system des
 - `README.md` — this high-level project overview.
 - `ARCHITECTURE.pdf` — architecture design document (system-level plan).
 - `LauraBukonte_AivotLabs_VoiceAgentDesign.pdf` — design submission / supporting material.
-- `Screen Recording ... .mov` — demo recording.
+- `ScreenRecording_ChatDemo.mov` — demo recording.
 - `prototype/` — runnable FastAPI prototype - description in the prototype/README.md
 
 
