@@ -236,7 +236,7 @@ class LLMService:
 
 
 # ===========================================================================
-# Regex for Llama-style raw text tool calls (workaround)
+# Regex for Llama-style raw text tool calls (this is workaround for Groq's current limitations in structured tool call parsing)
 # ===========================================================================
 
 # Supports variants like:
