@@ -120,16 +120,16 @@ class LLMService:
         """Handle the logic for the 'book_appointment' tool."""
         patient_name = (fn_args.get("patient_name") or "").strip()
         if not patient_name:
-            return "Virhe: patient_name puuttuu. Kysy potilaan koko nimi ennen varauksen tekemistä."
+            return _ERR_NAME_MISSING
         if not _looks_like_full_name(patient_name):
-            return "Virhe: Potilaan etu- ja sukunimi vaaditaan. Pyydä myös sukunimi."
+            return _ERR_NAME_PARTIAL
 
         slot_id = (fn_args.get("slot_id") or "").strip()
         if not slot_id:
-            return "Virhe: Aikatunnus puuttuu. Kysy potilaalta valittu aika."
+            return _ERR_SLOT_MISSING
 
         if not _is_true(fn_args.get("slot_confirmed", False)):
-            return "Virhe: Aikaa ei ole vahvistettu. Varmista ensin, että aika on oikein."
+            return _ERR_NOT_CONFIRMED
 
         return self._booking.book_appointment(
             patient_name=patient_name,
@@ -248,6 +248,14 @@ _RAW_TOOL_RE = re.compile(
 )
 
 _FAILED_GENERATION_RE = re.compile(r"['\"]failed_generation['\"]:\s*['\"](.*?)['\"]")
+
+# ===========================================================================
+# Tool result error messages (in Finnish — returned to the LLM as tool output)
+# ===========================================================================
+_ERR_NAME_MISSING   = "Virhe: patient_name puuttuu. Kysy potilaan koko nimi ennen varauksen tekemistä."
+_ERR_NAME_PARTIAL   = "Virhe: Potilaan etu- ja sukunimi vaaditaan. Pyydä myös sukunimi."
+_ERR_SLOT_MISSING   = "Virhe: Aikatunnus puuttuu. Kysy potilaalta valittu aika."
+_ERR_NOT_CONFIRMED  = "Virhe: Aikaa ei ole vahvistettu. Varmista ensin, että aika on oikein."
 
 
 # ===========================================================================
