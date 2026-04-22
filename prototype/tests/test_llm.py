@@ -35,6 +35,16 @@ def test_parse_inline_raw_tool_call_with_colon_separator():
     ]
 
 
+def test_parse_inline_raw_tool_call_without_separator_before_json():
+    text = (
+        'Selvä. <function=check_availability{"appointment_type":"Suuhygienistiaika"}</function>'
+    )
+
+    assert _parse_raw_tool_calls(text) == [
+        ("check_availability", {"appointment_type": "Suuhygienistiaika"})
+    ]
+
+
 def test_parse_inline_raw_tool_call_with_space_separator():
     text = (
         'Selvä. <function=check_availability {"appointment_type":"Hammaslääkäriaika"}>'

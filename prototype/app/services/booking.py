@@ -76,7 +76,7 @@ class BookingService:
 
         if not available:
             if appointment_type:
-                return f"Ei vapaita aikoja tyypille '{appointment_type}'."
+                return f"Ei vapaita aikoja varaus tyypille '{appointment_type}'."
             return "Ei vapaita aikoja tällä hetkellä."
 
         lines: list[str] = []

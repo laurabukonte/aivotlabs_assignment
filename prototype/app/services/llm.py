@@ -243,7 +243,7 @@ class LLMService:
 #   <function=check_availability>{"appointment_type":"Hammaslääkäriaika"}</function>
 #   <function=check_availability={"appointment_type":"Hammaslääkäriaika"}></function>
 _RAW_TOOL_RE = re.compile(
-    r"<function=(\w+)(?:\s+(\{[^<]*?\})\s*>?|>\s*(\{[^<]*?\})\s*|[=:](\{[^<]*?\})\s*>?\s*)</function>",
+    r"<function=(\w+)(?:\s+(\{[^<]*?\})\s*>?|>\s*(\{[^<]*?\})\s*|[=:](\{[^<]*?\})\s*>?\s*|(\{[^<]*?\})\s*>?\s*)</function>",
     re.DOTALL,
 )
 
@@ -261,7 +261,7 @@ def _parse_raw_tool_calls(text: str) -> list[tuple[str, dict]]:
     for match in _RAW_TOOL_RE.finditer(text):
         fn_name = match.group(1)
         try:
-            fn_args_str = match.group(2) or match.group(3) or match.group(4)
+            fn_args_str = match.group(2) or match.group(3) or match.group(4) or match.group(5)
             if fn_args_str:
                 fn_args = json.loads(fn_args_str)
                 results.append((fn_name, fn_args))
@@ -270,7 +270,10 @@ def _parse_raw_tool_calls(text: str) -> list[tuple[str, dict]]:
 
     # Fallback for more permissive parsing if primary fails
     if not results:
-        fallback_pattern = re.compile(r"<function=(\w+)[>=:]\s*(\{.*?\})\s*>?\s*</function>", re.DOTALL)
+        fallback_pattern = re.compile(
+            r"<function=(\w+)(?:[>=:]|\s+)?\s*(\{.*?\})\s*>?\s*</function>",
+            re.DOTALL,
+        )
         for match in fallback_pattern.finditer(text):
             fn_name = match.group(1)
             try:
