@@ -29,7 +29,7 @@ class LLMService:
     """Manages LLM client and the multi-turn tool-calling conversation loop."""
 
     def __init__(self, booking_service: BookingService):
-        self._client = OpenAI(base_url=LLM_BASE_URL, api_key=LLM_API_KEY, default_headers={"HTTP-Referer": "https://aistudio.google.com/"} )
+        self._client = OpenAI(base_url=LLM_BASE_URL, api_key=LLM_API_KEY)
         self._booking = booking_service
 
 
