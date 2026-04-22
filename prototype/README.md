@@ -6,7 +6,7 @@ Built with FastAPI and an OpenAI-compatible LLM backend (default: Groq / Llama 3
 
 ---
 
-## What the Prototype Does
+## What the prototype does
 
 The agent acts as a receptionist for a fictional dental clinic. A patient opens a chat window and converses naturally in Finnish. Anna:
 
@@ -27,6 +27,23 @@ Bookings are persisted to a local JSON file (`bookings_log.json`). Sessions expi
 - Python 3.11+
 - [uv](https://github.com/astral-sh/uv) package manager
 - A Groq API key (free tier at [console.groq.com](https://console.groq.com)) — or any OpenAI-compatible provider
+
+---
+
+## Why Groq in this prototype
+
+Groq was chosen mainly for fast iteration speed and low development cost.
+
+### Pros
+
+- Many free tokens in the free tier, which keeps experimentation cost low.
+- Very fast inference latency, which makes the conversation feel responsive.
+- Faster model responses reduce developer feedback-loop time during debugging.
+
+### Cons
+
+- Some model outputs may expose tool-call text to the user (for example `<function=...>` style content).
+- The prototype needs a regex-based cleanup and recovery path to parse and hide malformed/raw tool calls.
 
 ---
 
